@@ -9,7 +9,7 @@ namespace Dinner.Application.Common.Interfaces.Repositories
 {
     public interface IUserRepo
     {
-        AppUser GetUserByEmail(string email);
+        Task<AppUser> GetUserByEmailAsync(string email);
         List<AppUser> GetUsers(Guid id);
         bool AddUser(AppUser user);
         bool UpdateUser(AppUser user);

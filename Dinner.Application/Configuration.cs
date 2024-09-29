@@ -1,5 +1,6 @@
-﻿using Dinner.Application.Services.Authentication;
+﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Dinner.Application
 {
@@ -7,7 +8,11 @@ namespace Dinner.Application
     {
         public static IServiceCollection AddAppServices(this IServiceCollection Services)
         {
-            Services.AddTransient<IAuthenticationService, AuthenticationService>();
+            //Services.AddMediatR(typeof(Configuration).Assembly);
+            Services.AddMediatR(ctg =>
+            {
+                ctg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            });
             return Services;
         }
     }

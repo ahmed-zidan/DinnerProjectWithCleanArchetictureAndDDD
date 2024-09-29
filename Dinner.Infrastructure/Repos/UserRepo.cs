@@ -20,7 +20,7 @@ namespace Dinner.Infrastructure.Repos
             throw new NotImplementedException();
         }
 
-        public AppUser GetUserByEmail(string email)
+        public Task<AppUser> GetUserByEmailAsync(string email)
         {
             throw new NotImplementedException();
         }
