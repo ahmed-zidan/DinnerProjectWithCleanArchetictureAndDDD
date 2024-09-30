@@ -1,4 +1,5 @@
-﻿using Dinner.Application.Authentication.Commands.Register;
+﻿using AutoMapper;
+using Dinner.Application.Authentication.Commands.Register;
 using Dinner.Application.Authentication.Common;
 using Dinner.Application.Authentication.Queries.Login;
 using Dinner.Application.Errors;
@@ -13,44 +14,34 @@ namespace Dinner.Api.Controllers
     public class AuthenticationController : BaseController
     {
         private readonly ISender _mediator;
+        private readonly IMapper _mapper;
 
-        public AuthenticationController(ISender mediator)
+        public AuthenticationController(ISender mediator, IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
 
         [HttpPost("Register")]
         public async Task<IActionResult> RegisterAsync(RegisterRequest model)
         {
-            
-            OneOf<AuthenticationRes, ApiResponse> res = await _mediator.Send(new RegisterCommand(model.FirstName, model.LastName, model.Email,
-                model.Password));
+            var command = _mapper.Map<RegisterCommand>(model);
+              
+            OneOf<AuthenticationRes, ApiResponse> res = await _mediator.Send(command);
 
             return res.Match(
-                 success => Ok(getAuthUser(res.AsT0)),
+                 success => Ok( _mapper.Map< AuthResponse>(res.AsT0)),
                  error => Problem(res.AsT1)
                  );
-        }
-
-        private AuthResponse getAuthUser(AuthenticationRes res)
-        {
-            return new AuthResponse
-                        (
-                            Email: res.user.Email,
-                            FirstName: res.user.FirstName,
-                            LastName: res.user.LastName,
-                            Id: res.user.Id,
-                            Token: res.Token
-                        );
         }
 
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginRequest model)
         {
-            var res = await _mediator.Send(new LoginQuery(model.Email,
-                model.Password));
+            var querey = _mapper.Map<LoginQuery>(model);
+            var res = await _mediator.Send(querey);
             return res.Match(
-                success => Ok(getAuthUser(res.AsT0)),
+                success => Ok(_mapper.Map<AuthResponse>(res.AsT0)),
                 error => Problem(res.AsT1)
                 );
            

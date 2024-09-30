@@ -1,5 +1,11 @@
-﻿using MediatR;
+﻿using Dinner.Application.Authentication.Commands.Register;
+using Dinner.Application.Authentication.Common;
+using Dinner.Application.Common.Behaviors;
+using Dinner.Application.Errors;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using OneOf;
 using System.Reflection;
 
 namespace Dinner.Application
@@ -13,6 +19,10 @@ namespace Dinner.Application
             {
                 ctg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
+            Services.AddScoped(typeof(IPipelineBehavior<,>) , typeof(ValidationBehavior<,>));
+           
+
+            Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             return Services;
         }
     }
