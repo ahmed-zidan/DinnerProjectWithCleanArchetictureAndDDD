@@ -1,4 +1,5 @@
 ﻿using Dinner.Domain.Common.Models;
+using Dinner.Domain.Common.ValueObjects;
 using Dinner.Domain.Dinner.ValueObjects;
 using Dinner.Domain.Host.ValueObjects;
 using Dinner.Domain.Menu.Entity;
@@ -29,7 +30,7 @@ namespace Dinner.Domain.Menu
         public DateTime CreatedDateTime { get; }
         public DateTime UpdatedDateTime { get; }
 
-        private Menu(MenuId id, string name, string description, float averageRating,
+        private Menu(MenuId id, string name, string description, AverageRating averageRating,
             HostId hostId , DateTime createdDate, DateTime updatedDate)
         :base(id){
             Name = name;
@@ -40,7 +41,7 @@ namespace Dinner.Domain.Menu
             UpdatedDateTime = updatedDate;
         }
         
-        public static Menu Create(string name, string description, float averageRating,
+        public static Menu Create(string name, string description, AverageRating averageRating,
             HostId hostId)
         {
             return new Menu(MenuId.CreateUniqueId(), name, description, averageRating,
