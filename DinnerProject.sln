@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Api", "DinnerProject\Dinner.Api.csproj", "{33DC5D5C-1BF1-4418-919B-10EC1CC193B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Api", "DinnerProject\Dinner.Api.csproj", "{33DC5D5C-1BF1-4418-919B-10EC1CC193B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Contracts", "Dinner.Contracts\Dinner.Contracts.csproj", "{58BBB5C2-B823-4BCD-A2A6-B30830EEAC1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Contracts", "Dinner.Contracts\Dinner.Contracts.csproj", "{58BBB5C2-B823-4BCD-A2A6-B30830EEAC1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Domain", "Dinner.Domain\Dinner.Domain.csproj", "{45769F86-A3B2-4152-8786-9A39DDBF3233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Domain", "Dinner.Domain\Dinner.Domain.csproj", "{45769F86-A3B2-4152-8786-9A39DDBF3233}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Infrastructure", "Dinner.Infrastructure\Dinner.Infrastructure.csproj", "{48E02514-13F6-4BB3-B9F3-7E0BA36F1A95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Infrastructure", "Dinner.Infrastructure\Dinner.Infrastructure.csproj", "{48E02514-13F6-4BB3-B9F3-7E0BA36F1A95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Application", "Dinner.Application\Dinner.Application.csproj", "{010870F2-2666-4F3B-8E89-F1FEB43E37B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Application", "Dinner.Application\Dinner.Application.csproj", "{010870F2-2666-4F3B-8E89-F1FEB43E37B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinnerUnitTests", "DinnerUnitTests\DinnerUnitTests.csproj", "{125AB58C-7DC6-4FA6-95A4-83D40D6CB623}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{010870F2-2666-4F3B-8E89-F1FEB43E37B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{010870F2-2666-4F3B-8E89-F1FEB43E37B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{010870F2-2666-4F3B-8E89-F1FEB43E37B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125AB58C-7DC6-4FA6-95A4-83D40D6CB623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125AB58C-7DC6-4FA6-95A4-83D40D6CB623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125AB58C-7DC6-4FA6-95A4-83D40D6CB623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125AB58C-7DC6-4FA6-95A4-83D40D6CB623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

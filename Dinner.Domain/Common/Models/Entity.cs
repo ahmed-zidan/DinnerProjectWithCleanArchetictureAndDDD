@@ -6,12 +6,22 @@ using System.Threading.Tasks;
 
 namespace Dinner.Domain.Common.Models
 {
-    public abstract class Entity<TID> : IEquatable<Entity<TID>> where TID : notnull
+    public abstract class Entity<TID> : IEquatable<Entity<TID>>, IHasDomainEvents where TID : notnull
     {
+        private readonly List<IDomainEvent> _domainEvents = new();
+        public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
         public TID Id{ get; protected set; }
         protected Entity(TID id)
         {
             Id = id;
+        }
+        protected Entity()
+        {
+
+        }
+
+        public void AddDomainEvent(IDomainEvent domainEvent){
+            _domainEvents.Add(domainEvent);
         }
 
         public override bool Equals(object? obj)
@@ -33,6 +43,11 @@ namespace Dinner.Domain.Common.Models
         }
         public override int GetHashCode() { 
             return Id.GetHashCode();
+        }
+
+        public void ClreaDomainEvents()
+        {
+            _domainEvents.Clear();
         }
     }
 }

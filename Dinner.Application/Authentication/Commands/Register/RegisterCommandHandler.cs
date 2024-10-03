@@ -2,7 +2,7 @@
 using Dinner.Application.Common.Interfaces.Authentication;
 using Dinner.Application.Common.Interfaces.Repositories;
 using Dinner.Application.Errors;
-using Dinner.Domain.Entities;
+using Dinner.Domain.UserAggregate;
 using MediatR;
 using OneOf;
 
@@ -26,13 +26,9 @@ namespace Dinner.Application.Authentication.Commands.Register
             {
                 return new ApiResponse(400, "User already exist");
             }
-            AppUser appUser = new AppUser()
-            {
-                Email = request.Email,
-                Password = request.Password,
-                FirstName = request.FirstName,
-                LastName = request.LastName
-            };
+            AppUser appUser = AppUser.CreateNew(request.FirstName, request.LastName, request.Email,
+                request.Password);
+           
             _unitOfWork._userRepo.AddUser(appUser);
             await _unitOfWork.SaveChangesAsync();
 

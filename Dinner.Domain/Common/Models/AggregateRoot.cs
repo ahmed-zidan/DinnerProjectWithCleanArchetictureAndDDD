@@ -13,5 +13,10 @@ namespace Dinner.Domain.Common.Models
         {
 
         }
+        protected AggregateRoot()
+        {
+
+        }
+
     }
 }

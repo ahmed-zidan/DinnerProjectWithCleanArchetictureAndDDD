@@ -1,8 +1,11 @@
 ﻿using Dinner.Application.Common.Interfaces.Authentication;
 using Dinner.Application.Common.Interfaces.Repositories;
 using Dinner.Infrastructure.Authentication;
+using Dinner.Infrastructure.Data;
+using Dinner.Infrastructure.Interceptors;
 using Dinner.Infrastructure.Repos;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -17,6 +20,7 @@ namespace Dinner.Infrastructure
         {
             Services.AddSingleton<IJWTTokenGenerator, JwtTokenGenerator>();
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            Services.AddScoped<PublishedDomainEventsInterceptor>();
             Services.AddIdentityServices(Configuration);
             return Services;
         }
@@ -25,8 +29,8 @@ namespace Dinner.Infrastructure
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            /*services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("ToyDb")));
-            services.AddIdentity<AppUser, IdentityRole>(
+            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("DinnerDb")));
+            /*services.AddIdentity<AppUser, IdentityRole>(
               opt =>
               {
                   opt.Password.RequireNonAlphanumeric = false;

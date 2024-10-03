@@ -1,5 +1,5 @@
 ﻿using Dinner.Application.Common.Interfaces.Authentication;
-using Dinner.Domain.Entities;
+using Dinner.Domain.UserAggregate;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

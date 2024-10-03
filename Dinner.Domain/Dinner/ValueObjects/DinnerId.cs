@@ -9,10 +9,14 @@ namespace Dinner.Domain.Dinner.ValueObjects
 {
     public sealed class DinnerId : ValueObject
     {
-        public Guid Value { get;}
+        public Guid Value { get; private set; }
         private DinnerId(Guid id)
         {
             Value = id;
+        }
+        private DinnerId()
+        {
+            
         }
         public static DinnerId CreateUnique()
         {

@@ -1,4 +1,5 @@
 ﻿using Dinner.Application.Common.Interfaces.Repositories;
+using Dinner.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,17 @@ namespace Dinner.Infrastructure.Repos
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public IUserRepo _userRepo => new UserRepo();
-
-        public Task<bool> SaveChangesAsync()
+        private readonly AppDbContext _context;
+        public UnitOfWork(AppDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public IUserRepo _userRepo => new UserRepo(_context);
+        public IMenuRepo _menuRepo => new MenuRepo(_context);
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync()> 0;
         }
     }
 }

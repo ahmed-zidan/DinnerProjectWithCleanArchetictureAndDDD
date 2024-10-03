@@ -1,4 +1,4 @@
-﻿using Dinner.Domain.Entities;
+﻿using Dinner.Domain.UserAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;

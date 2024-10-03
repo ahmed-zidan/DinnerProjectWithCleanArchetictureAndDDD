@@ -16,6 +16,10 @@ namespace Dinner.Domain.Common.ValueObjects
             Value = value;
             NumRatings = numRatings;
         }
+        private AverageRating()
+        {
+            
+        }
         public static AverageRating CreateNew(double value = 0, int numRatings = 0)
         {
             return new AverageRating(value, numRatings);

@@ -9,6 +9,7 @@ namespace Dinner.Application.Common.Interfaces.Repositories
     public interface IUnitOfWork
     {
         IUserRepo _userRepo { get; }
+        IMenuRepo _menuRepo { get; }
         Task<bool> SaveChangesAsync();
     }
 }
